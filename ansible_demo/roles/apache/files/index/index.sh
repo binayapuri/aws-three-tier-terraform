@@ -1,0 +1,1 @@
+echo "<h1>Hello World from $(hostname -f)</h1>" | sudo tee /var/www/html/index.html

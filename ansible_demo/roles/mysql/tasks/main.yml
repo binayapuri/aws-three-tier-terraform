@@ -1,0 +1,14 @@
+- name: Copy SQL file to remote host
+  copy:
+    src: "vars/swastika.sql"
+    dest: "/tmp/script.sql"
+    mode: 0644
+
+- name: Execute SQL script on RDS
+  mysql_db:
+    login_host: "terraform-20231204071230742600000004.cjxiy3mnxh80.us-east-2.rds.amazonaws.com"
+    login_user: "{{user}}"
+    login_password: "{{password}}"
+    name: mydb
+    state: import
+    target: "/tmp/script.sql"

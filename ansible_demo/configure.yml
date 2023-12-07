@@ -1,0 +1,11 @@
+---
+- hosts: Application_tier
+  become: true
+  roles:
+    - apache
+    - php
+    # - mysql
+
+  vars:
+    ansible_user : ubuntu
+    

@@ -1,0 +1,41 @@
+- name: Transfer folder to EC2 instance
+  hosts: EC2
+  # gather_facts: false
+  become: true
+ 
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+    - name: Install Ansible in public ec2
+      apt:
+        name: ansible
+        state: present
+    - name: copy ansible_demo folder to public ec2
+      synchronize:
+        src: /home/swastika/demo_project/ansible_demo
+        dest: /home/ubuntu/
+    - name: Install Python 3
+      apt:
+        name: python3
+        state: present
+    - name: Install Python pip package manager
+      apt:
+        name: python3-pip
+        state: present
+    - name: Install Boto3 using pip
+      pip:
+        name: boto3
+        executable: pip3
+        state: present
+    - name: Install AWS CLI package
+      apt:
+        name: awscli
+        state: present
+    - name: send the script file to public ec2
+      copy:
+        src: /home/swastika/demo_project/ansible_demo/script.sh
+        dest: /home/ubuntu/ansible_demo/script.sh
+        mode: "0755"
+    - name: Execute script
+      shell: /home/ubuntu/ansible_demo/script.sh

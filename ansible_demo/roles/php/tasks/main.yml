@@ -1,0 +1,17 @@
+- name: Make sure the packages are installed (Debian/Ubuntu)
+  apt:
+    pkg: "{{item}}"
+    state: present
+    update_cache: yes
+  with_items:
+    - php
+    - php-cli
+    - php-common
+    - php-curl
+    - php-gd
+    - php-mbstring
+    - php-mysql
+    - php-xml
+    - python3-pymysql
+    - mysql-client
+  

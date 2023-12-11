@@ -1,14 +1,14 @@
-#Output from VPC module
-output "vpc-id" {
-    value= module.vpc.vpc_id
+# #Output from VPC module
+# output "vpc-id" {
+#     value= module.vpc.vpc_id
   
-}
-output "public_subnets" {
-  value = module.vpc.public_subnet
-}
-output "private_subnets" {
-  value = module.vpc.private_subnet
-}
+# }
+# output "public_subnets" {
+#   value = module.vpc.public_subnet
+# }
+# output "private_subnets" {
+#   value = module.vpc.private_subnet
+# }
 
 #Output from EC2 module
 # output "security_group" {
@@ -21,6 +21,6 @@ output "private_subnets" {
 # }
 
 #Output from ALB
-output "Tg-arn"{
-    value = module.elb.target_group_arn
-}
+# output "Tg-arn"{
+#     value = module.elb.target_group_arn
+# }
